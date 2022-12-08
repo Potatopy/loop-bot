@@ -1,0 +1,8 @@
+```
+nextcord
+asyncio
+aiosqlite
+requests
+wavelink
+python-dotenv
+```
