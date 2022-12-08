@@ -2,7 +2,7 @@
 
 bot made by domain#0001 for .gg/loop
 
-# Features
+## Features
 - Welcome system
 - An economy system (W.I.P)
 - A music system (no queue cmd tho it doesn't work for some reason)
@@ -11,13 +11,14 @@ bot made by domain#0001 for .gg/loop
 - Level system
 - More comming soon!
 
-# Requirements
+## Requirements
 
 - Python 3.9 or higher
 - a mongodb login
 - a discord bot token
 - everything in requirements.txt (NOTE: for wavelink you need to change all the dependencies to nextcord instead of discord.py)
 
-# Links
+## Links
 
 [MIT](https://choosealicense.com/licenses/mit/)
+[Support](https://discord.gg/9j8qcsVFQX)
