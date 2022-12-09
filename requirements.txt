@@ -6,4 +6,5 @@ requests
 wavelink
 python-dotenv
 pymongo
+easy-pil
 ```

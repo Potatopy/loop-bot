@@ -1,6 +1,6 @@
 # loop-bot
 
-bot made by domain#0001 for .gg/loop
+bot made by domain#0001 for .gg/loop (at least thats the future vanity)
 
 ## Features
 - Welcome system
@@ -9,7 +9,7 @@ bot made by domain#0001 for .gg/loop
 - A moderation system (need ideas lmao)
 - Anime commands (NSFW)
 - Level system
-- More comming soon!
+- And Many More!
 
 ## Requirements
 
