@@ -1,7 +1,7 @@
 import nextcord
 import requests
-import asyncio
 from nextcord.ext import commands
+
 
 class Anime(commands.Cog):
     def __init__(self, bot):
@@ -10,7 +10,7 @@ class Anime(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Anime commands are online!')
-    
+
     @commands.command(description='Sends a random hentai image (YOU MUST BE IN AN NSFW CHANNEL))')
     @commands.is_nsfw()
     async def hentai(self, ctx):
@@ -20,6 +20,7 @@ class Anime(commands.Cog):
         em.set_image(url=res['message'])
         em.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.display_avatar)
         await ctx.send(embed=em)
-                
+
+
 def setup(bot):
     bot.add_cog(Anime(bot))
