@@ -70,4 +70,4 @@ async def reload(ctx, extension):
     await ctx.send(f'Reloaded {extension} cog')
 
 
-bot.start(TOKEN)
+bot.run(TOKEN)
