@@ -1,10 +1,10 @@
 # Dependencies
 
-import discord
+import nextcord
 import os
 import asyncio
-from discord.ext import commands
-from discord import File
+from nextcord.ext import commands
+from nextcord import File
 from easy_pil import Editor, load_image_async, Font
 from dotenv import load_dotenv
 
@@ -12,18 +12,17 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
 
-bot = commands.Bot(command_prefix='.', intents=discord.Intents.all())
+bot = commands.Bot(command_prefix='.', intents=nextcord.Intents.all())
 
 # Load all cogs
-async def load():
-    for fn in os.listdir('./cogs'):
-        if fn.endswith('.py'):
-            await bot.load_extension(f'cogs.{fn[:-3]}')
+for fn in os.listdir('./cogs'):
+    if fn.endswith('.py'):
+        bot.load_extension(f'cogs.{fn[:-3]}')
 
 
 @bot.event
 async def on_ready():
-    activity = discord.Activity(name='.gg/loop', type=discord.ActivityType.watching)
+    activity = nextcord.Activity(name='.gg/loop', type=nextcord.ActivityType.watching)
     await bot.change_presence(activity=activity)
     print(f"Bot is online || Logged in as {bot.user} ID: {bot.user.id}")
 
@@ -71,8 +70,4 @@ async def reload(ctx, extension):
     await ctx.send(f'Reloaded {extension} cog')
 
 
-async def main():
-    await load()
-    await bot.start(TOKEN)
-
-asyncio.run(main())
+bot.start(TOKEN)

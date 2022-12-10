@@ -1,4 +1,4 @@
-discord.py
+nextcord
 aiosqlite
 asyncio
 aiohttp

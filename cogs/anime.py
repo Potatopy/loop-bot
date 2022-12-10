@@ -1,6 +1,6 @@
-import discord
+import nextcord
 import requests
-from discord.ext import commands
+from nextcord.ext import commands
 
 
 class Anime(commands.Cog):
@@ -16,7 +16,7 @@ class Anime(commands.Cog):
     async def hentai(self, ctx):
         r = requests.get('https://nekobot.xyz/api/image?type=hentai')
         res = r.json()
-        em = discord.Embed()
+        em = nextcord.Embed()
         em.set_image(url=res['message'])
         em.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.display_avatar)
         await ctx.send(embed=em)

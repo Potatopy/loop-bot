@@ -1,5 +1,5 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 
 class Mod(commands.Cog):
     def __init__(self, bot):
@@ -17,13 +17,13 @@ class Mod(commands.Cog):
 
     @commands.command(description='Kicks a member')
     @commands.has_permissions(kick_members=True)
-    async def kick(self, ctx, member:discord.Member, *, reason=None):
+    async def kick(self, ctx, member:nextcord.Member, *, reason=None):
         await member.kick(reason=reason)
         await ctx.send(f"get out {member.mention}, Reason: {reason}")
 
     @commands.command(description='Bans a member')
     @commands.has_permissions(ban_members=True)
-    async def ban(self, ctx, member:discord.Member, *, reason=None):
+    async def ban(self, ctx, member:nextcord.Member, *, reason=None):
         await member.ban(reason=reason)
         await ctx.send(f"smokin that {member.mention} pack 🚬, Reason: {reason}")
 
@@ -40,7 +40,7 @@ class Mod(commands.Cog):
 
     @commands.command(description='Locks a channel/server')
     @commands.has_permissions(manage_guild=True)
-    async def lock(self, ctx, channel:discord.TextChannel=None, setting=None):
+    async def lock(self, ctx, channel:nextcord.TextChannel=None, setting=None):
         if setting == '--server':
             for channel in ctx.guild.channels:
                 await channel.set_permissions(ctx.guild.default_role, send_messages=False)
@@ -53,7 +53,7 @@ class Mod(commands.Cog):
     
     @commands.command(description='Locks a channel/server')
     @commands.has_permissions(manage_guild=True)
-    async def unlock(self, ctx, channel:discord.TextChannel=None, setting=None):
+    async def unlock(self, ctx, channel:nextcord.TextChannel=None, setting=None):
         if setting == '--server':
             for channel in ctx.guild.channels:
                 await channel.set_permissions(ctx.guild.default_role, send_messages=True)
