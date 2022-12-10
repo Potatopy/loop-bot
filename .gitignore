@@ -134,4 +134,5 @@ dmypy.json
 
 # Miscellaneous
 imgs/
-cogs/events.py
+*.config
+*.zip
