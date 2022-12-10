@@ -8,7 +8,7 @@ load_dotenv()
 mongo = os.getenv('MONGO_DB')
 
 bot_channel = 1049886726199455794 # bot channel
-talk_channels = [1049886706280714302] # channels where you can gain xp
+talk_channels = [1049886706280714302, 1049890194645581924] # channels where you can gain xp
 
 level = ["lvl 5", "lvl 10", "lvl 25", "lvl 50 (vip perks)"] # roles to give out (CHANGE THIS TO YOUR OWN ROLES + must be in the same order as levelnum)
 levelnum = [5, 10, 25, 50] # level to give out the role

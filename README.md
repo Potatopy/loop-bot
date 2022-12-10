@@ -3,6 +3,7 @@
 bot made by domain#0001 for .gg/loop (at least thats the future vanity)
 
 ## Features
+
 - Welcome system
 - An economy system (W.I.P)
 - A music system (no queue cmd tho it doesn't work for some reason)
@@ -21,4 +22,5 @@ bot made by domain#0001 for .gg/loop (at least thats the future vanity)
 ## Links
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
 [Support](https://discord.gg/9j8qcsVFQX)
