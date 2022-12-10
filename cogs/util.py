@@ -85,5 +85,5 @@ class Util(commands.Cog):
             image = BytesIO(base64.b64decode(images[0].encode("utf-8")))
             return await msg.edit(content="Here is your image!", file=nextcord.File(image, "generatedImage.png"), view=DropdownView(msg, images, ctx.author.id))
 
-async def setup(bot):
-     await bot.add_cog(Util(bot))
+def setup(bot):
+    bot.add_cog(Util(bot))

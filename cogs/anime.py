@@ -21,6 +21,5 @@ class Anime(commands.Cog):
         em.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.display_avatar)
         await ctx.send(embed=em)
 
-
-async def setup(bot):
-    await bot.add_cog(Anime(bot))
+def setup(bot):
+    bot.add_cog(Anime(bot))

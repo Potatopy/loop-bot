@@ -98,5 +98,5 @@ class Level(commands.Cog):
                     break
             await ctx.send(embed=em)
             
-async def setup(bot):
-    await bot.add_cog(Level(bot))
+def setup(bot):
+    bot.add_cog(Level(bot))

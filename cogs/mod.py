@@ -64,5 +64,5 @@ class Mod(commands.Cog):
         await channel.set_permissions(ctx.guild.default_role, send_messages=True)
         await ctx.send(f"Unlocked {channel.mention}")
 
-async def setup(bot):
-    await bot.add_cog(Mod(bot))
+def setup(bot):
+    bot.add_cog(Mod(bot))
