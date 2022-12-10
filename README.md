@@ -6,7 +6,6 @@ bot made by domain#0001 for .gg/loop (at least thats the future vanity)
 
 - Welcome system
 - An economy system (W.I.P)
-- A music system (no queue cmd tho it doesn't work for some reason)
 - A moderation system (need ideas lmao)
 - Anime commands (NSFW)
 - Level system
