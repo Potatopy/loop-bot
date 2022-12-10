@@ -1,6 +1,6 @@
-import nextcord
+import discord
 import os
-from nextcord.ext import commands
+from discord.ext import commands
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
@@ -46,8 +46,8 @@ class Level(commands.Cog):
                         await message.channel.send(f"{message.author.mention} has leveled up to **{lvl}**!")
                         for i in range(len(level)):
                             if lvl == levelnum[i]:
-                                await message.author.add_roles(nextcord.utils.get(message.author.guild.roles, name=level[i]))
-                                em = nextcord.Embed(description=f"{message.author.mention} now has the {level[1]} role check out <#1049892987070590996> to see what you got!")
+                                await message.author.add_roles(discord.utils.get(message.author.guild.roles, name=level[i]))
+                                em = discord.Embed(description=f"{message.author.mention} now has the {level[1]} role check out <#1049892987070590996> to see what you got!")
                                 em.set_thumbnail(url=message.author.display_avatar)
                                 await message.channel.send(embed=em)
 
@@ -72,7 +72,7 @@ class Level(commands.Cog):
                     rank += 1
                     if stats["id"] == x["id"]:
                         break
-                em = nextcord.Embed(title="{}'s rank".format(ctx.author.name))
+                em = discord.Embed(title="{}'s rank".format(ctx.author.name))
                 em.add_field(name="User", value=ctx.author.mention, inline=True)
                 em.add_field(name="XP", value=f"{xp}/{int(200*((1/2)*lvl))}", inline=True)
                 em.add_field(name="Rank", value=f"{rank}", inline=True)
@@ -85,7 +85,7 @@ class Level(commands.Cog):
         if (ctx.channel.id == bot_channel):
             rankings = leveling.find().sort("xp", -1)
             i = 1
-            em = nextcord.Embed(title="Rankings:")
+            em = discord.Embed(title="Rankings:")
             for x in rankings:
                 try:
                     temp = ctx.guild.get_member(x["id"])
@@ -98,5 +98,5 @@ class Level(commands.Cog):
                     break
             await ctx.send(embed=em)
             
-def setup(bot):
-    bot.add_cog(Level(bot))
+async def setup(bot):
+    await bot.add_cog(Level(bot))

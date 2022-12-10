@@ -1,8 +1,8 @@
-import nextcord
+import discord
 import asyncio
 import aiosqlite
 import random
-from nextcord.ext import commands
+from discord.ext import commands
 
 class Economy(commands.Cog):
     def __init__(self, bot):
@@ -62,11 +62,11 @@ class Economy(commands.Cog):
             await db.commit() 
     
     @commands.command(aliases=['bal', 'money', 'cash', 'coins'])
-    async def balance(self, ctx, member: nextcord.Member = None):
+    async def balance(self, ctx, member: discord.Member = None):
         if not member:
             member = ctx.author
         wallet, bank, maxbank = await self.get_balance(member)
-        em = nextcord.Embed(title=f"{member.name}'s balance", color=nextcord.Color.green())
+        em = discord.Embed(title=f"{member.name}'s balance", color=discord.Color.green())
         em.add_field(name="Wallet", value=f"${wallet}")
         em.add_field(name="Bank", value=f"${bank} / ${maxbank}")
         await ctx.send(embed=em)
@@ -103,7 +103,7 @@ class Economy(commands.Cog):
             return await ctx.send("you are not in our database, run the command again we added you ;)")
 
         wallet, bank, maxbank = await self.get_balance(ctx.author)
-        em = nextcord.Embed(title=f"${amount} has been withdrew", color=nextcord.Color.green())
+        em = discord.Embed(title=f"${amount} has been withdrew", color=discord.Color.green())
         em.add_field(name="New Wallet", value=f"${wallet}")
         em.add_field(name="New Bank", value=f"${bank} / ${maxbank}")
         await ctx.send(embed=em)
@@ -130,14 +130,14 @@ class Economy(commands.Cog):
             return await ctx.send("ur poor lol")
 
         wallet, bank, maxbank = await self.get_balance(ctx.author)
-        em = nextcord.Embed(title=f"${amount} has been deposited", color=nextcord.Color.green())
+        em = discord.Embed(title=f"${amount} has been deposited", color=discord.Color.green())
         em.add_field(name="New Wallet", value=f"${wallet}")
         em.add_field(name="New Bank", value=f"${bank} / ${maxbank}")
         await ctx.send(embed=em)
 
     @commands.command(aliases=['donate'])
     @commands.cooldown(1, 10, commands.BucketType.user)
-    async def give(self, ctx, member: nextcord.Member, amt):
+    async def give(self, ctx, member: discord.Member, amt):
         wallet, bank, maxbank = await self.get_balance(ctx.author)
         try:
             amount = int(amt)
@@ -156,11 +156,11 @@ class Economy(commands.Cog):
 
         wallet2, bank2, maxbank2 = await self.get_balance(member)
 
-        em = nextcord.Embed(title=f"${amount} coins given to {member.name}", color=nextcord.Color.green())
+        em = discord.Embed(title=f"${amount} coins given to {member.name}", color=discord.Color.green())
         em.add_field(name=f"{ctx.author.name}'s New Wallet", value=f"${wallet}")
         em.add_field(name=f"{member.name}'s New Wallet", value=f"${wallet2}")
 
         await ctx.send(embed=em)
 
-def setup(bot):
-    bot.add_cog(Economy(bot))
+async def setup(bot):
+    await bot.add_cog(Economy(bot))

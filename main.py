@@ -1,9 +1,10 @@
 # Dependencies
 
-import nextcord
+import discord
 import os
-from nextcord.ext import commands
-from nextcord import File
+import asyncio
+from discord.ext import commands
+from discord import File
 from easy_pil import Editor, load_image_async, Font
 from dotenv import load_dotenv
 
@@ -11,17 +12,18 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
 
-bot = commands.Bot(command_prefix='.', intents=nextcord.Intents.all())
+bot = commands.Bot(command_prefix='.', intents=discord.Intents.all())
 
 # Load all cogs
-for fn in os.listdir('./cogs'):
-    if fn.endswith('.py'):
-        bot.load_extension(f'cogs.{fn[:-3]}')
+async def load():
+    for fn in os.listdir('./cogs'):
+        if fn.endswith('.py'):
+            await bot.load_extension(f'cogs.{fn[:-3]}')
 
 
 @bot.event
 async def on_ready():
-    activity = nextcord.Activity(name='.gg/loop', type=nextcord.ActivityType.watching)
+    activity = discord.Activity(name='.gg/loop', type=discord.ActivityType.watching)
     await bot.change_presence(activity=activity)
     print(f"Bot is online || Logged in as {bot.user} ID: {bot.user.id}")
 
@@ -52,7 +54,7 @@ async def on_member_join(member):
 
 
 @bot.command()
-async def load(ctx, extension):
+async def load_ext(ctx, extension):
     bot.load_extension(f'cogs.{extension}')
     await ctx.send(f'Loaded {extension} cog')
 
@@ -69,4 +71,8 @@ async def reload(ctx, extension):
     await ctx.send(f'Reloaded {extension} cog')
 
 
-bot.run(TOKEN)
+async def main():
+    await load()
+    await bot.start(TOKEN)
+
+asyncio.run(main())
