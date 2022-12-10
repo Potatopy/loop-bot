@@ -5,4 +5,4 @@ aiohttp
 requests
 pillow
 easy-pil
-python_dotenv
+python-dotenv
