@@ -22,9 +22,10 @@ for fn in os.listdir('./cogs'):
 
 @bot.event
 async def on_ready():
-    activity = nextcord.Activity(name='.gg/loop', type=nextcord.ActivityType.watching)
+    activity = nextcord.Activity(name='.gg/loop', type=nextcord.ActivityType.watching, status=nextcord.Status.do_not_disturb)
     await bot.change_presence(activity=activity)
     print(f"Bot is online || Logged in as {bot.user} ID: {bot.user.id}")
+    print("------------------------------------------------------------")
 
 
 @bot.event
@@ -52,19 +53,19 @@ async def on_member_join(member):
     await channel.send(f"Welcome {member.mention} to /loop", file=file)
 
 
-@bot.command()
+@bot.command(title="load", description="Loads a cog", usage="load_ext <cog name>")
 async def load_ext(ctx, extension):
     bot.load_extension(f'cogs.{extension}')
     await ctx.send(f'Loaded {extension} cog')
 
 
-@bot.command()
+@bot.command(title="unload", description="Unloads a cog", usage="unload <cog name>")
 async def unload(ctx, extension):
     bot.unload_extension(f'cogs.{extension}')
     await ctx.send(f'Unloaded {extension} cog')
 
 
-@bot.command()
+@bot.command(title="reload", description="Reloads a cog", usage="reload <cog name>")
 async def reload(ctx, extension):
     bot.reload_extension(f'cogs.{extension}')
     await ctx.send(f'Reloaded {extension} cog')
